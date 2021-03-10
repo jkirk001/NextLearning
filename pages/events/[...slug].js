@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { getFilteredEvents } from "../../dummy-data";
 import EventList from "../../components/events/event-list";
+import ResultsTitle from "../../components/events/results-title";
 
 const EventSlug = (props) => {
   const router = useRouter();
@@ -14,7 +15,8 @@ const EventSlug = (props) => {
 
     return (
       <div>
-        {results.length > 0 ? (
+        <ResultsTitle date={[queryDate.year, queryDate.month]} />
+        {results && results.length > 0 ? (
           <EventList items={results} />
         ) : (
           <h1>Nothin found</h1>
